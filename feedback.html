@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <title>coding.trick</title>
+</head>
+
+<body>
+<div class="emoji-slider">
+    <ul>
+        <li>awful</li>
+        <li>bad</li>
+        <li>okay</li>
+        <li>good</li>
+        <li>great</li>
+    </ul>
+    <div class="smiley">
+        <svg class="eye left" viewBox="0 0 18 22">
+            <path d="M12.6744144,18.0128897 C17.3794842,15.6567898 19.3333811,9.83072065 17.0385652,5 C15.7595661,7.57089081 13.5517099,9.64170285 10.4149967,11.2124361 C7.27828344,12.7831694 3.80661788,13.5564215 0,13.5321925 C2.2948159,18.3629131 7.9693445,20.3689896 12.6744144,18.0128897 Z"></path>
+        </svg>
+        <svg class="eye right" viewBox="0 0 18 22">
+            <path d="M12.6744144,18.0128897 C17.3794842,15.6567898 19.3333811,9.83072065 17.0385652,5 C15.7595661,7.57089081 13.5517099,9.64170285 10.4149967,11.2124361 C7.27828344,12.7831694 3.80661788,13.5564215 0,13.5321925 C2.2948159,18.3629131 7.9693445,20.3689896 12.6744144,18.0128897 Z"></path>
+        </svg>
+        <svg class="mouth" viewBox="0 0 64 28">
+            <path d="M32,2 C41.5729357,2 58,10.8218206 58,21 C50.2396023,18.9643641 41.5729357,17.9465462 32,17.9465462 C22.4270643,17.9465462 13.7603977,18.9643641 6,21 C6,10.8218206 22.4270643,2 32,2 Z"></path>
+        </svg>
+        <svg class="teeth" viewBox="0 0 64 28">
+            <path d="M32,7.83261436 C41.5729357,7.83261436 52.5729357,7.05507624 63,1.5 C63,10.3056732 46.3594035,14.5 32,14.5 C17.6405965,14.5 1,10.3056732 1,1.5 C11.4270643,7.05507624 22.4270643,7.83261436 32,7.83261436 Z"></path>
+        </svg>
+    </div>
+    <div class="slide">
+        <div></div>
+    </div>
+    <div class="bottom">
+        I'm feeling
+        <ul>
+            <li>awful</li>
+            <li>bad</li>
+            <li>okay</li>
+            <li>good</li>
+            <li>great</li>
+        </ul>
+        <button>Save</button>
+    </div>
+</div>
+
+<svg style="position: absolute; visibility: hidden;">
+    <defs>
+        <filter id="inset-shadow">
+            <feOffset dx='0' dy='3' />
+            <feGaussianBlur stdDeviation='1' result='offset-blur' />
+            <feComposite operator='out' in='SourceGraphic' in2='offset-blur' result='inverse' />
+            <feFlood flood-color='black' flood-opacity='.5' result='color' />
+            <feComposite operator='in' in='color' in2='inverse' result='shadow' />
+            <feComposite operator='over' in='shadow' in2='SourceGraphic' />
+        </filter>
+    </defs>
+</svg>
+
+<!-- dribbble - twitter -->
+<a class="dribbble" href="https://dribbble.com/shots/8583409-Morphing-Emoji-Slider" target="_blank"><img src="https://cdn.dribbble.com/assets/dribbble-ball-mark-2bd45f09c2fb58dbbfb44766d5d1d07c5a12972d602ef8b32204d28fa3dda554.svg" alt=""></a>
+<a class="twitter" target="_blank" href="https://twitter.com/aaroniker_me"><svg xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 72 72"><path d="M67.812 16.141a26.246 26.246 0 0 1-7.519 2.06 13.134 13.134 0 0 0 5.756-7.244 26.127 26.127 0 0 1-8.313 3.176A13.075 13.075 0 0 0 48.182 10c-7.229 0-13.092 5.861-13.092 13.093 0 1.026.118 2.021.338 2.981-10.885-.548-20.528-5.757-26.987-13.679a13.048 13.048 0 0 0-1.771 6.581c0 4.542 2.312 8.551 5.824 10.898a13.048 13.048 0 0 1-5.93-1.638c-.002.055-.002.11-.002.162 0 6.345 4.513 11.638 10.504 12.84a13.177 13.177 0 0 1-3.449.457c-.846 0-1.667-.078-2.465-.231 1.667 5.2 6.499 8.986 12.23 9.09a26.276 26.276 0 0 1-16.26 5.606A26.21 26.21 0 0 1 4 55.976a37.036 37.036 0 0 0 20.067 5.882c24.083 0 37.251-19.949 37.251-37.249 0-.566-.014-1.134-.039-1.694a26.597 26.597 0 0 0 6.533-6.774z"></path></svg></a>
+    <script src="script.js"></script>
+</body>
+
+</html>
