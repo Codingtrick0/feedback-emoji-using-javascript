@@ -1,0 +1,317 @@
+.emoji-slider {
+    // Awful colors
+    --awful-gradient-start: #FD8D58;
+    --awful-gradient-end: #DC611E;
+    --awful-fill: #FB8043;
+    --awful-radial: #FFCCB0;
+    --awful-border: #{rgba(#DE5B1A, .5)};
+    --awful-shadow: #{rgba(#90420E, .5)};
+    --awful-mouth-fill: #A34106;
+    --awful-mouth-shadow: #{rgba(#C45F28, .6)};
+    --awful-mouth-shine: #FEC6A7;
+    --awful-color: #ffaa68;
+    // Bad colors
+    --bad-gradient-start: #FEA954;
+    --bad-gradient-end: #DA7315;
+    --bad-fill: #FCA730;
+    --bad-radial: #FEE8C6;
+    --bad-border: #{rgba(#E07B13, .5)};
+    --bad-shadow: #{rgba(#BC600C, .5)};
+    --bad-mouth-fill: #AB6C09;
+    --bad-mouth-shadow: #{rgba(#945907, .4)};
+    --bad-mouth-shine: #FDE0B4;
+    --bad-color: #fbba4a;
+    // Okay colors
+    --okay-gradient-start: #FEBE53;
+    --okay-gradient-end: #DF820F;
+    --okay-fill: #FBBB1F;
+    --okay-radial: #FEF3BD;
+    --okay-border: #{rgba(#E08F06, .5)};
+    --okay-shadow: #{rgba(#BE6D09, .5)};
+    --okay-mouth-fill: #AB7509;
+    --okay-mouth-shadow: #{rgba(#926807, .4)};
+    --okay-mouth-shine: #FFEECE;
+    --okay-color: #fbd24b;
+    // Good colors
+    --good-gradient-start: #FED151;
+    --good-gradient-end: #DE981F;
+    --good-fill: #FBD51F;
+    --good-radial: #FEF3BD;
+    --good-border: #{rgba(#D5A50E, .5)};
+    --good-shadow: #{rgba(#BB840F, .5)};
+    --good-mouth-fill: #AB7509;
+    --good-mouth-shadow: #{rgba(#926807, .4)};
+    --good-mouth-shine: #FFEECE;
+    --good-color: #fcd34a;
+    // Great colors
+    --great-gradient-start: #A1BD53;
+    --great-gradient-end: #73AD5F;
+    --great-fill: #F4EF51;
+    --great-radial: #FDFDEC;
+    --great-border: #{rgba(#A7BB2E, .5)};
+    --great-shadow: #{rgba(#888632, .5)};
+    --great-mouth-fill: #8A8313;
+    --great-mouth-shadow: #{rgba(#5D5003, .25)};
+    --great-mouth-shine: #FDF8B4;
+    --great-color: #d2f482;
+    width: 320px;
+    height: 288px;
+    border-radius: 13px;
+    overflow: hidden;
+    position: relative;
+    background-image: linear-gradient(var(--gradient-start, var(--awful-gradient-start)),  var(--gradient-end, var(--awful-gradient-end)));
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    & > ul,
+    .bottom ul {
+        li {
+            transform: translateY(var(--y, 0));
+            opacity: var(--o, 0);
+            transition: opacity .2s;
+            &:not(:first-child) {
+                width: 100%;
+                position: absolute;
+            }
+            @for $i from 2 through 5 {
+                &:nth-child(#{$i}) {
+                    top: 100% * ($i - 1);
+                }
+            }
+        }
+    }
+    &.awful {
+        & > ul,
+        .bottom ul {
+            li:nth-child(1) {
+                --o: 1;
+            }
+        }
+    }
+    &.bad {
+        & > ul,
+        .bottom ul {
+            li:nth-child(2) {
+                --o: 1;
+            }
+        }
+    }
+    &.okay {
+        & > ul,
+        .bottom ul {
+            li:nth-child(3) {
+                --o: 1;
+            }
+        }
+    }
+    &.good {
+        & > ul,
+        .bottom ul {
+            li:nth-child(4) {
+                --o: 1;
+            }
+        }
+    }
+    &.great {
+        & > ul,
+        .bottom ul {
+            li:nth-child(5) {
+                --o: 1;
+            }
+        }
+        .smiley {
+            svg {
+                &.teeth {
+                    --teeth: 1;
+                }
+            }
+        }
+    }
+    &.scale {
+        .smiley {
+            animation: scale .6s ease forwards;
+        }
+    }
+    & > ul {
+        top: 12px;
+        left: 0;
+        right: 0;
+        font-size: 80px;
+        font-weight: 900;
+        opacity: .4;
+        text-align: center;
+        position: absolute;
+        text-transform: uppercase;
+        li {
+            user-select: none;
+            background-image: linear-gradient(rgba(#fff, .9), rgba(#fff, 0) 90%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    }
+    .smiley {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        z-index: 1;
+        margin: 60px auto 0 auto;
+        position: relative;
+        background: radial-gradient(circle, var(--radial, var(--awful-radial)) 0%, var(--fill, var(--awful-fill)) 70%);
+        background-size: 100% 180%;
+        background-position: center bottom;
+        box-shadow: inset 0 0 0 4px var(--border, var(--awful-border)), inset 0 -10px 12px var(--shadow, var(--awful-shadow));
+        filter: drop-shadow(0 8px 16px rgba(#000, .16));
+        svg {
+            display: block;
+            position: absolute;
+            backface-visibility: hidden;
+            transform: translateZ(0);
+            fill: var(--mouth-fill, var(--awful-mouth-fill));
+            &.eye {
+                width: 18px;
+                height: 22px;
+                top: 34px;
+                filter: drop-shadow(0 1px 2px var(--mouth-shine, var(--awful-mouth-shine))) url(#inset-shadow);
+                &.left {
+                    left: 30px;
+                }
+                &.right {
+                    right: 30px;
+                    transform: scaleX(-1);
+                }
+            }
+            &.mouth,
+            &.teeth {
+                width: 64px;
+                height: 28px;
+                left: 28px;
+                bottom: 24px;
+            }
+            &.mouth {
+                filter: drop-shadow(0 1px 2px var(--mouth-shine, var(--awful-mouth-shine))) drop-shadow(0 -1px 1px var(--mouth-shadow, var(--awful-mouth-shadow))) url(#inset-shadow);
+            }
+            &.teeth {
+                fill: #fff;
+                opacity: var(--teeth, 0);
+                transition: opacity .2s;
+            }
+        }
+    }
+    .slide {
+        left: 28px;
+        right: 28px;
+        bottom: 68px;
+        height: 12px;
+        position: absolute;
+        div {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #fff;
+            top: -6px;
+            left: -12px;
+            box-shadow: 0 2px 6px rgba(#000, .2);
+            position: relative;
+        }
+        &:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -3px;
+            width: 273px;
+            height: 12px;
+            background-image: url('data:image/svg+xml;utf8,<svg width="273px" height="12px" viewBox="0 0 273 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M266.934082,0.00110627889 C270.247182,-0.0357036686 272.96282,2.62025389 272.99963,5.93335351 C272.999877,5.95556942 273,5.97778653 273,6.00000382 C273,9.31330792 270.314036,11.9992716 267.000732,11.9992716 C266.978515,11.9992716 266.956298,11.9991482 266.934082,11.9989014 L2.96667078,9.06611103 C1.32291919,9.04784825 1.97412392e-14,7.71014921 0,6.06629617 L0,5.93371146 C9.7279267e-16,4.28985843 1.32291919,2.95215939 2.96667078,2.93389661 L266.934082,0.00110627889 Z M267,1.45028446 C264.514719,1.45028446 262.5,3.4872632 262.5,6.00000382 C262.5,8.51274443 264.514719,10.5497232 267,10.5497232 C269.485281,10.5497232 271.5,8.51274443 271.5,6.00000382 C271.5,3.4872632 269.485281,1.45028446 267,1.45028446 Z M210,1.95580884 C207.790861,1.95580884 206,3.7664566 206,6.00000382 C206,8.23355103 207.790861,10.0441988 210,10.0441988 C212.209139,10.0441988 214,8.23355103 214,6.00000382 C214,3.7664566 212.209139,1.95580884 210,1.95580884 Z M137,2.46133321 C135.067003,2.46133321 133.5,4.04565001 133.5,6.00000382 C133.5,7.95435763 135.067003,9.53867443 137,9.53867443 C138.932997,9.53867443 140.5,7.95435763 140.5,6.00000382 C140.5,4.04565001 138.932997,2.46133321 137,2.46133321 Z M64,2.96685758 C62.3431458,2.96685758 61,4.32484341 61,6.00000382 C61,7.67516423 62.3431458,9.03315005 64,9.03315005 C65.6568542,9.03315005 67,7.67516423 67,6.00000382 C67,4.32484341 65.6568542,2.96685758 64,2.96685758 Z M3,3.97790633 C1.8954305,3.97790633 1,4.88323021 1,6.00000382 C1,7.11677742 1.8954305,8.02210131 3,8.02210131 C4.1045695,8.02210131 5,7.11677742 5,6.00000382 C5,4.88323021 4.1045695,3.97790633 3,3.97790633 Z" fill="white" fill-opacity=".25"></path></svg>');
+        }
+    }
+    .bottom {
+        left: 0;
+        right: 0;
+        bottom: 0;
+        font-size: 14px;
+        line-height: 23px;
+        color: rgba(#fff, .8);
+        padding: 8px 16px;
+        border-radius: 0 0 13px 13px;
+        background: rgba(#000, .1);
+        position: absolute;
+        ul {
+            font-weight: 900;
+            vertical-align: top;
+            position: relative;
+            display: inline-block;
+            color: var(--color, var(--awful-color));
+        }
+        button {
+            -webkit-appearance: none;
+            border: 0;
+            margin: 0;
+            padding: 0 12px;
+            line-height: 25px;
+            height: 25px;
+            border-radius: 13px;
+            position: absolute;
+            cursor: pointer;
+            outline: none;
+            color: #fff;
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 12px;
+            right: 16px;
+            top: 7px;
+            background: var(--gradient-end, var(--awful-gradient-end));
+        }
+    }
+}
+
+@keyframes scale {
+    50% {
+        transform: scale(1.08) translateZ(0);
+        filter: drop-shadow(0 8px 24px rgba(#000, .12));
+    }
+}
+
+html {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+}
+
+* {
+    box-sizing: inherit;
+    &:before,
+    &:after {
+        box-sizing: inherit;
+    }
+}
+
+// Center & dribbble
+body {
+    min-height: 100vh;
+    display: flex;
+    font-family: 'Inter UI', Arial;
+    justify-content: center;
+    align-items: center;
+    background: #F6F8FF;
+    .dribbble {
+        position: fixed;
+        display: block;
+        right: 20px;
+        bottom: 20px;
+        img {
+            display: block;
+            height: 28px;
+        }
+    }
+    .twitter {
+        position: fixed;
+        display: block;
+        right: 64px;
+        bottom: 14px;
+        svg {
+            width: 32px;
+            height: 32px;
+            fill: #1da1f2;
+        }
+    }
+}
